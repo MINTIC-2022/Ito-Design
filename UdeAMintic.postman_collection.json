@@ -1,0 +1,164 @@
+{
+	"info": {
+		"_postman_id": "380aae4f-063c-49bc-8c99-d7ddbde583ae",
+		"name": "UdeAMintic",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "ListarPersonas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/persona/udea/mintic/listaPersonas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"persona",
+						"udea",
+						"mintic",
+						"listaPersonas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "crearPersona",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"Pepe\",\r\n    \"apellido\": \"Perez\",\r\n    \"edad\": 25,\r\n    \"id\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/persona/udea/mintic/crearPersona",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"persona",
+						"udea",
+						"mintic",
+						"crearPersona"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "buscarPersona",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "crearPersonaConDocumento",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"Maria\",\r\n    \"apellido\": \"Moreno\",\r\n    \"edad\": 40,\r\n    \"id\": 1,\r\n    \"doc\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/persona/udea/mintic/crearPersona/CC",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"persona",
+						"udea",
+						"mintic",
+						"crearPersona",
+						"CC"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "actualizarPersona",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/persona/udea/mintic/actualizarPersona?id=2&nombreModificado=Marta",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"persona",
+						"udea",
+						"mintic",
+						"actualizarPersona"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "2"
+						},
+						{
+							"key": "nombreModificado",
+							"value": "Marta"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "actualizarPersonaParcial",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/persona/udea/mintic/actualizarPP",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"persona",
+						"udea",
+						"mintic",
+						"actualizarPP"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "borrarPersona",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}
