@@ -20,9 +20,9 @@ public class ControllerPersona {
 
         DomainPersona datosEmpleado = new DomainPersona();
 
-        datosEmpleado.setNombre("Indega.sa");
-        datosEmpleado.setApellido("Alimentos");
-        datosEmpleado.setId(1190989234);
+        datosEmpleado.setNombre("Kevin");
+        datosEmpleado.setApellido("Lopez");
+        datosEmpleado.setId(123456677);
 
 
         return servicesPersona.crearEmpleado(datosEmpleado);
