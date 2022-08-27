@@ -1,7 +1,8 @@
 package ItoDesign.proyectoEmpresa.services;
 
 import ItoDesign.proyectoEmpresa.domain.DomainEmpresa;
-
+import org.springframework.stereotype.Service;
+@Service
 public class ServicesEmpresa {
 
 
