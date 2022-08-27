@@ -10,10 +10,16 @@ public class DomainEmpresa {
     private String nombreEmpresa;
 
     @Getter @Setter
+    private String direccion;
+
+    @Getter @Setter
+    private int telefono;
+
+    @Getter @Setter
     private String sector;
 
     @Getter @Setter
-    private String nit;
+    private int nit;
 
     @Getter @Setter
     private int id;
