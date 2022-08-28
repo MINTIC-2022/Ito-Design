@@ -52,6 +52,6 @@ public class ControllerPersona {
         }
 
         return new ResponseEntity<DomainPersona>(administrador,HttpStatus.OK) ;
-        
+
     }
 }

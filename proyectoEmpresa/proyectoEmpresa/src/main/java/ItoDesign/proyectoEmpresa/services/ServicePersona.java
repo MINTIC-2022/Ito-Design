@@ -66,9 +66,7 @@ public class ServicePersona {
         objPersona.setEdad(administrador.getEdad());
         objPersona.setId(administrador.getId());
         objPersona.setTipo(administrador.getTipo());
-
-
-        System.out.println("Crear persona con tarjeta de identidad");
+        
         listaP.add(objPersona);
         return Boolean.TRUE;
     }
