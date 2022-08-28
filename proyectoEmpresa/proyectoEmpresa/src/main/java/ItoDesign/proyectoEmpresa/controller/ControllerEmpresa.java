@@ -13,16 +13,18 @@ public class ControllerEmpresa {
     ServicesEmpresa servicesEmpresa;
 
     @ResponseBody
-    //http://8080/localhost/empresa/crearEmpresa
+   // http://localhost:8080/Users/harcr/Documents/Ito-Design/proyectoEmpresa/crear
     @RequestMapping(value="/Users/harcr/Documents/Ito-Design/proyectoEmpresa/crear")
 
     public String visualDatosEmpresa(){
 
-        DomainEmpresa datosEmpresa = new DomainEmpresa();
+        DomainEmpresa datosEmpresa = new DomainEmpresa();   // Se instancia la clase empresa
 
-        datosEmpresa.setNombreEmpresa("Indega.sa");
-        datosEmpresa.setSector("Alimentos");
-        datosEmpresa.setNit("1190989234");
+        datosEmpresa.setNombreEmpresa("Indega.sa");        //  se modifica el nombre de la clase empresa
+        datosEmpresa.setDireccion("avenida 2b # 75An -37");//  se modifica la direccion de la clase empresa
+        datosEmpresa.setTelefono(2224415);                 //  se modifica el telefono de la clase empresa
+        datosEmpresa.setSector("Alimentos");               //  se agrega el sector como complemento
+        datosEmpresa.setNit(10121234);                     //  se modifica el nit de la empresa
 
 
 

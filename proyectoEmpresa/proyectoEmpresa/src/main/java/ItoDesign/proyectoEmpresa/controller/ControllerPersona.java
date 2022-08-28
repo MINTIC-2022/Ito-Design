@@ -26,6 +26,7 @@ public class ControllerPersona {
         return servicesPersona.listar();
     }
 
+
     @PostMapping(path = "/sprint/gestionempresa/crearEmpleado",  produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity <DomainPersona> crearEmpleado(@RequestBody DomainPersona empleado){
 
@@ -51,7 +52,6 @@ public class ControllerPersona {
         }
 
         return new ResponseEntity<DomainPersona>(administrador,HttpStatus.OK) ;
-
-
+        
     }
 }
