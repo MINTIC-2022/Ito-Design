@@ -23,4 +23,5 @@ public class DomainEmpresa {
 
     @Getter @Setter
     private int id;
+
 }

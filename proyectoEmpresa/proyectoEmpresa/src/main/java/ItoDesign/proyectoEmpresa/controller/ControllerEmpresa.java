@@ -1,34 +1,51 @@
 package ItoDesign.proyectoEmpresa.controller;
 
+import ItoDesign.proyectoEmpresa.Repository.EntityEmpresa;
 import ItoDesign.proyectoEmpresa.domain.DomainEmpresa;
 import ItoDesign.proyectoEmpresa.services.ServicesEmpresa;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
+@RequestMapping(value="/persona")
 public class ControllerEmpresa {
-    @Autowired                                                            // Sirve para simplificar el new la instanciacion
+    @Autowired
     ServicesEmpresa servicesEmpresa;
 
-    @ResponseBody
-   // http://localhost:8080/Users/harcr/Documents/Ito-Design/proyectoEmpresa/crear
-    @RequestMapping(value="/Users/harcr/Documents/Ito-Design/proyectoEmpresa/crear")
+   // @GetMapping(path="/udea/mintic/visualizarTodosJPA",produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(path="/udea/mintic/visualizarTodoJPA",produces = MediaType.APPLICATION_JSON_VALUE)
 
-    public String visualDatosEmpresa(){
+    public ResponseEntity<Object> visualizarTodoJPA(){
 
-        DomainEmpresa datosEmpresa = new DomainEmpresa();   // Se instancia la clase empresa
+        return new  ResponseEntity <Object>(servicesEmpresa.visualizarTodosJPA(), HttpStatus.OK);
 
-        datosEmpresa.setNombreEmpresa("Indega.sa");        //  se modifica el nombre de la clase empresa
-        datosEmpresa.setDireccion("avenida 2b # 75An -37");//  se modifica la direccion de la clase empresa
-        datosEmpresa.setTelefono(2224415);                 //  se modifica el telefono de la clase empresa
-        datosEmpresa.setSector("Alimentos");               //  se agrega el sector como complemento
-        datosEmpresa.setNit(10121234);                     //  se modifica el nit de la empresa
-
-
-
-       return servicesEmpresa.crearEmpresa(datosEmpresa);
     }
+
+
+    @PostMapping(path ="/udea/mintic/agregarEmpresaJPA",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
+
+    public ResponseEntity<Boolean> agregarEmpresa(@RequestBody EntityEmpresa empresa){
+
+
+
+    return new ResponseEntity<Boolean>(servicesEmpresa.agregarEmpresa(empresa),HttpStatus.OK);
+    }
+
+
+@PutMapping(path = "/udea/mintic/actualizarTotalJPA",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
+
+   public ResponseEntity<Boolean> actualizarTotalJPA(@RequestBody EntityEmpresa empresa){
+
+
+    return new ResponseEntity<Boolean>( servicesEmpresa.actualizarTotalJPA(empresa), HttpStatus.OK);
+}
+
+
 
 }
