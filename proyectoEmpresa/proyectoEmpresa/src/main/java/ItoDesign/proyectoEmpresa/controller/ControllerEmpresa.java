@@ -18,34 +18,38 @@ public class ControllerEmpresa {
     @Autowired
     ServicesEmpresa servicesEmpresa;
 
-   // @GetMapping(path="/udea/mintic/visualizarTodosJPA",produces = MediaType.APPLICATION_JSON_VALUE)
+
     @GetMapping(path="/udea/mintic/visualizarTodoJPA",produces = MediaType.APPLICATION_JSON_VALUE)
 
-    public ResponseEntity<Object> visualizarTodoJPA(){
-
-        return new  ResponseEntity <Object>(servicesEmpresa.visualizarTodosJPA(), HttpStatus.OK);
-
+         public ResponseEntity<Object> visualizarTodoJPA(){
+     return new  ResponseEntity <Object>(servicesEmpresa.visualizarTodosJPA(), HttpStatus.OK);
     }
 
 
     @PostMapping(path ="/udea/mintic/agregarEmpresaJPA",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
 
-    public ResponseEntity<Boolean> agregarEmpresa(@RequestBody EntityEmpresa empresa){
-
-
-
+       public ResponseEntity<Boolean> agregarEmpresa(@RequestBody EntityEmpresa empresa){
     return new ResponseEntity<Boolean>(servicesEmpresa.agregarEmpresa(empresa),HttpStatus.OK);
     }
 
 
 @PutMapping(path = "/udea/mintic/actualizarTotalJPA",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
 
-   public ResponseEntity<Boolean> actualizarTotalJPA(@RequestBody EntityEmpresa empresa){
-
-
+       public ResponseEntity<Boolean> actualizarTotalJPA(@RequestBody EntityEmpresa empresa){
     return new ResponseEntity<Boolean>( servicesEmpresa.actualizarTotalJPA(empresa), HttpStatus.OK);
 }
 
+@PatchMapping(path = "/udea/mintic/actualizaParcialJPA",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
+
+       public  ResponseEntity<Object> actualizaParcialJPA(@RequestBody EntityEmpresa empresa){
+    return new ResponseEntity<Object>(servicesEmpresa.actualizarParcialJPA(empresa),HttpStatus.OK);
+}
+
+@DeleteMapping(path = "/udea/mintic/eliminarEmpresaJPA/{id}")
+
+        public void eliminarEmpresa(@PathVariable Long id){
+     servicesEmpresa.eliminarEmpresa( id);
+}
 
 
 }
