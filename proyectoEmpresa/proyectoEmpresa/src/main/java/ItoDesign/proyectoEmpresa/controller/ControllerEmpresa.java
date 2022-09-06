@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping(value="/persona")
+@RequestMapping(value="/enterprises")
 public class ControllerEmpresa {
     @Autowired
     ServicesEmpresa servicesEmpresa;
@@ -33,22 +33,30 @@ public class ControllerEmpresa {
     }
 
 
-@PutMapping(path = "/udea/mintic/actualizarTotalJPA",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
+    @PutMapping(path = "/udea/mintic/actualizarTotalJPA",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
 
        public ResponseEntity<Boolean> actualizarTotalJPA(@RequestBody EntityEmpresa empresa){
     return new ResponseEntity<Boolean>( servicesEmpresa.actualizarTotalJPA(empresa), HttpStatus.OK);
 }
 
-@PatchMapping(path = "/udea/mintic/actualizaParcialJPA",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
 
-       public  ResponseEntity<Object> actualizaParcialJPA(@RequestBody EntityEmpresa empresa){
+    @GetMapping(path="/udea/mintic/visualizarFilaJPA/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
+
+        public  ResponseEntity<Object>visualizarTodoIdJPA( @PathVariable  Long id){
+    return new  ResponseEntity <Object>(servicesEmpresa.visualizarIdJPA(id), HttpStatus.OK);
+    }
+
+    @PatchMapping(path = "/udea/mintic/actualizaParcialJPA",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
+
+       public ResponseEntity<Object> actualizaParcialJPA(@RequestBody EntityEmpresa empresa){
     return new ResponseEntity<Object>(servicesEmpresa.actualizarParcialJPA(empresa),HttpStatus.OK);
 }
 
-@DeleteMapping(path = "/udea/mintic/eliminarEmpresaJPA/{id}")
+    @DeleteMapping(path = "/udea/mintic/eliminarEmpresaJPA/{id}")
 
-        public void eliminarEmpresa(@PathVariable Long id){
-     servicesEmpresa.eliminarEmpresa( id);
+        public ResponseEntity<Object> eliminarEmpresa(@PathVariable Long id){
+            servicesEmpresa.eliminarEmpresa( id);
+     return new ResponseEntity<Object>(HttpStatus.OK);
 }
 
 
