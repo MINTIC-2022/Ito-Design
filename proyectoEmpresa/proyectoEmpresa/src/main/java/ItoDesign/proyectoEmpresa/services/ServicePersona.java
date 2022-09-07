@@ -1,13 +1,16 @@
 package ItoDesign.proyectoEmpresa.services;
 
+import ItoDesign.proyectoEmpresa.Repository.EntityPersona;
 import ItoDesign.proyectoEmpresa.domain.DomainEmpresa;
 import ItoDesign.proyectoEmpresa.domain.DomainPersona;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import ItoDesign.proyectoEmpresa.Repository.RepositoryPersona;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 @Service
@@ -19,55 +22,35 @@ public class ServicePersona {
     private String nombrePrograma;
     static ArrayList<DomainPersona> listaP;
 
-    public ServicePersona(ArrayList<DomainPersona> listaP) {
-        this.listaP = listaP;
+    @Autowired
+    RepositoryPersona repositoryPersona;
+
+
+    public List<EntityPersona> listarTodosPersona(){
+
+        List<EntityPersona> list = repositoryPersona.findAll();
+
+        return  list;
     }
 
-
-
-    public String crearEmpleado(DomainPersona empleado){
-
-        String confCrearEmpleado = "El empleado con nombre: "+ empleado.getNombre()+"y apellido: "+empleado.getApellido()+"con edad de :"+ empleado.getEdad();
-
-
-        return confCrearEmpleado;
-    }
-
-    public Boolean addEmpleado(DomainPersona empleado ){
-        DomainPersona objPersona = new DomainPersona();
-
-        objPersona.setNombre(empleado.getNombre());
-        objPersona.setApellido(empleado.getApellido());
-        objPersona.setEdad(empleado.getEdad());
-        objPersona.setId(empleado.getId());
-        listaP.add(objPersona);
-
-        return Boolean.TRUE;
-    }
-
-    public ArrayList<DomainPersona> listar(){
-        return listaP;
-    }
-
-    public static DomainPersona buscarEmpleado(int id){
-        DomainPersona persona = null;
-        for(DomainPersona p : listaP){
-            if(p.getId() == id){
-                return  p;
-            }
+    public Boolean insertaPersona(EntityPersona persona){
+        try {
+            repositoryPersona.save(persona);
+        }catch (Exception e){
+            return Boolean.FALSE;
         }
-        return persona;
+        return  Boolean.TRUE;
     }
 
-    public Boolean addAdministrador(DomainPersona administrador, String tipo ){
-        DomainPersona objPersona = new DomainPersona();
-        objPersona.setNombre(administrador.getNombre());
-        objPersona.setApellido(administrador.getApellido());
-        objPersona.setEdad(administrador.getEdad());
-        objPersona.setId(administrador.getId());
-        objPersona.setTipo(administrador.getTipo());
-        
-        listaP.add(objPersona);
-        return Boolean.TRUE;
+    public Boolean actualizarTodoPersona(EntityPersona persona){
+
+        try {
+            repositoryPersona.save(persona);
+        }catch (Exception e){
+            return Boolean.FALSE;
+        }
+        return  Boolean.TRUE;
     }
+
+
 }

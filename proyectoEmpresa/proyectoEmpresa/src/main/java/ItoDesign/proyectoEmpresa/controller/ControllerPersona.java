@@ -1,5 +1,6 @@
 package ItoDesign.proyectoEmpresa.controller;
 
+import ItoDesign.proyectoEmpresa.Repository.EntityPersona;
 import ItoDesign.proyectoEmpresa.domain.DomainEmpresa;
 import ItoDesign.proyectoEmpresa.domain.DomainPersona;
 import ItoDesign.proyectoEmpresa.services.ServicePersona;
@@ -20,38 +21,20 @@ public class ControllerPersona {
 
     @ResponseBody
 
-    @GetMapping(path = "/sprint/gestionempresa/lista/empleado", produces = MediaType.APPLICATION_JSON_VALUE)
-
-    public ArrayList<DomainPersona> listaEmpleado(){
-        return servicesPersona.listar();
+    @GetMapping(path = "/udea/mintic/listarTodosPersona", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Object> listartodo(){
+        return  new ResponseEntity<Object>(servicesPersona.listarTodosPersona(), HttpStatus.OK)  ;
     }
 
+    @PostMapping(path = "/udea/mintic/insertarPersona", consumes =  MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity <Boolean> insertarPersona (@RequestBody EntityPersona persona){
 
-    @PostMapping(path = "/sprint/gestionempresa/crearEmpleado",  produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity <DomainPersona> crearEmpleado(@RequestBody DomainPersona empleado){
+        return new ResponseEntity<Boolean>(servicesPersona.insertaPersona(persona), HttpStatus.OK);
 
-        boolean salida = servicesPersona.addEmpleado(empleado);
-
-        if(salida == true){
-
-            return new ResponseEntity<DomainPersona>(empleado, HttpStatus.OK);
-        }else {
-            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
-
-        }
     }
-    @PostMapping(path = "/sprint/gestionempresa/crearAdministrador/{tipo}", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity <DomainPersona> crearPersonaCondicional(@RequestBody DomainPersona administrador, @PathVariable String tipo){
 
-        switch (tipo){
-            case "Administrador":
-                servicesPersona.addAdministrador(administrador, tipo);
-                break;
-            default:
-                return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-
-        return new ResponseEntity<DomainPersona>(administrador,HttpStatus.OK) ;
-
+    @PutMapping(path = "/udea/mintic/actulizarTodoPersona",consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Boolean> actualizarTodoPersona(@RequestBody EntityPersona persona){
+        return new ResponseEntity<Boolean>(servicesPersona.actualizarTodoPersona(persona), HttpStatus.OK);
     }
 }

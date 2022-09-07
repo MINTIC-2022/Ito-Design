@@ -11,6 +11,4 @@ import lombok.Data;
     private int edad;
 
     private int id;
-
-    private String tipo;
 }
