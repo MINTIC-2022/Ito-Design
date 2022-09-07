@@ -1,6 +1,7 @@
 package ItoDesign.proyectoEmpresa.services;
 
 import ItoDesign.proyectoEmpresa.Repository.EntityPersona;
+import ItoDesign.proyectoEmpresa.Repository.RepositoryEmpresa;
 import ItoDesign.proyectoEmpresa.domain.DomainEmpresa;
 import ItoDesign.proyectoEmpresa.domain.DomainPersona;
 import lombok.Getter;
@@ -17,6 +18,8 @@ import java.util.List;
 public class ServicePersona {
     //@Autowired
     //DomainPersona empleado;
+
+
     @Getter
     @Setter
     private String nombrePrograma;
