@@ -1,0 +1,80 @@
+{
+	"info": {
+		"_postman_id": "082debef-f84f-4dc2-b4e4-e32c3908428b",
+		"name": "udeaMinticProyectoEmpresa",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23094351"
+	},
+	"item": [
+		{
+			"name": "GET visualizarTodoJPA",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/persona/udea/mintic/visualizarTodosJPA",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"persona",
+						"udea",
+						"mintic",
+						"visualizarTodosJPA"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST agregarEmpresa",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "GET visualizarPorId",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "PUT actualizarTodoJPA",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "PATCH actualizaParcialJPA",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE eliminarEmpresa",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "POST",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}
