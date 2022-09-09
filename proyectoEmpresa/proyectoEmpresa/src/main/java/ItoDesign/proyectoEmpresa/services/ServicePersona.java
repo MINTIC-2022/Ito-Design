@@ -45,14 +45,28 @@ public class ServicePersona {
         return  Boolean.TRUE;
     }
 
-    public Boolean actualizarTodoPersona(EntityPersona persona){
+    public void actualizarTodoPersona(EntityPersona persona){
 
-        try {
-            repositoryPersona.save(persona);
-        }catch (Exception e){
-            return Boolean.FALSE;
+        EntityPersona perTemp = repositoryPersona.findById(persona.getId()).orElse(null);
+
+        if(persona.getNombre() != null){
+            perTemp.setNombre(persona.getNombre());
+        } else if (persona.getApellido() != null) {
+            perTemp.setApellido(persona.getApellido());
+        }else if (persona.getEdad() != null) {
+            perTemp.setEdad(persona.getEdad());
+        }else if (persona.getDoc() != null) {
+            perTemp.setDoc(persona.getDoc());
+        }else if (persona.getPassword() != null) {
+            perTemp.setPassword(persona.getPassword());
         }
-        return  Boolean.TRUE;
+
+        repositoryPersona.save(perTemp);
+
+    }
+
+    public  void borrarPersona(Long id){
+        repositoryPersona.deleteById(id);
     }
 
 
