@@ -35,15 +35,16 @@ public class ControllerPersona {
     }
 
     @PatchMapping(path = "/udea/mintic/actualizarTodoPersona", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public void actualizarTodoPersona(@RequestBody EntityPersona persona){
+    public ResponseEntity<Object> actualizarTodoPersona(@RequestBody EntityPersona persona){
 
-        servicesPersona.actualizarTodoPersona(persona);
+        return new ResponseEntity<Object>(servicesPersona.actualizarTodoPersona(persona), HttpStatus.OK);
 
     }
 
     @DeleteMapping(path = "/udea/mintic/borrarPersona/{id}")
-    public void borrarPersona(@PathVariable Long id){
+    public ResponseEntity<Boolean> borrarPersona(@PathVariable Long id){
         servicesPersona.borrarPersona(id);
+        return new ResponseEntity<Boolean>(HttpStatus.OK);
     }
 
 }

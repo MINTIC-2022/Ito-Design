@@ -45,7 +45,7 @@ public class ServicePersona {
         return  Boolean.TRUE;
     }
 
-    public void actualizarTodoPersona(EntityPersona persona){
+    public Object actualizarTodoPersona(EntityPersona persona){
 
         EntityPersona perTemp = repositoryPersona.findById(persona.getId()).orElse(null);
 
@@ -61,12 +61,14 @@ public class ServicePersona {
             perTemp.setPassword(persona.getPassword());
         }
 
-        repositoryPersona.save(perTemp);
+        return repositoryPersona.save(perTemp);
 
     }
 
-    public  void borrarPersona(Long id){
+    public  Boolean borrarPersona(Long id){
+
         repositoryPersona.deleteById(id);
+        return  Boolean.TRUE;
     }
 
 
