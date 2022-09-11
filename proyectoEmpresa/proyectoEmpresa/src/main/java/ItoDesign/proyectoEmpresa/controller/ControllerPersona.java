@@ -42,10 +42,10 @@ public class ControllerPersona {
 
 
 
-    @PatchMapping(path = "/udea/mintic/actualizarTodoPersona", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Object> actualizarTodoPersona(@RequestBody EntityPersona persona){
+    @PatchMapping(path = "/udea/mintic/actualizarParcialPersona", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Object> actualizarParcialPersonaJPA(@RequestBody EntityPersona persona){
 
-        return new ResponseEntity<Object>(servicesPersona.actualizarTodoPersona(persona), HttpStatus.OK);
+        return new ResponseEntity<Object>(servicesPersona.actualizarParcialPersonaJPA(persona), HttpStatus.OK);
 
     }
 
