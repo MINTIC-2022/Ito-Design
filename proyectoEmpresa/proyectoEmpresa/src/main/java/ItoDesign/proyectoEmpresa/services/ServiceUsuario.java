@@ -1,22 +1,19 @@
 package ItoDesign.proyectoEmpresa.services;
 
-import ItoDesign.proyectoEmpresa.Repository.EntityEmpresa;
-import ItoDesign.proyectoEmpresa.Repository.EntityPersona;
-import ItoDesign.proyectoEmpresa.Repository.RepositoryEmpresa;
-import ItoDesign.proyectoEmpresa.domain.DomainEmpresa;
+import ItoDesign.proyectoEmpresa.Repository.EntityUsuario;
 import ItoDesign.proyectoEmpresa.domain.DomainPersona;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ItoDesign.proyectoEmpresa.Repository.RepositoryPersona;
+import ItoDesign.proyectoEmpresa.Repository.RepositoryUsuario;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
 @Service
-public class ServicePersona {
+public class ServiceUsuario {
     //@Autowired
     //DomainPersona empleado;
 
@@ -27,28 +24,28 @@ public class ServicePersona {
     static ArrayList<DomainPersona> listaP;
 
     @Autowired
-    RepositoryPersona repositoryPersona;
+    RepositoryUsuario repositoryUsuario;
 
 
-    public List<EntityPersona> listarTodosPersona(){
+    public List<EntityUsuario> listarTodosUsuario(){
 
-        List<EntityPersona> list = repositoryPersona.findAll();
+        List<EntityUsuario> list = repositoryUsuario.findAll();
 
         return  list;
     }
 
-    public Boolean insertaPersona(EntityPersona persona){
+    public Boolean insertaUsuario(EntityUsuario persona){
         try {
-            repositoryPersona.save(persona);
+            repositoryUsuario.save(persona);
         }catch (Exception e){
             return Boolean.FALSE;
         }
         return  Boolean.TRUE;
     }
 
-    public Object actualizarTodoPersona(EntityPersona persona){
+    public Object actualizarTodoUsuario(EntityUsuario persona){
 
-        EntityPersona perTemp = repositoryPersona.findById(persona.getId()).orElse(null);
+        EntityUsuario perTemp = repositoryUsuario.findById(persona.getId()).orElse(null);
 
         if(persona.getNombre() != null){
             perTemp.setNombre(persona.getNombre());
@@ -62,14 +59,14 @@ public class ServicePersona {
             perTemp.setPassword(persona.getPassword());
         }
 
-        return repositoryPersona.save(perTemp);
+        return repositoryUsuario.save(perTemp);
 
     }
 
 
-    public  Object actualizarParcialPersonaJPA(EntityPersona persona){
+    public  Object actualizarParcialUsuarioJPA(EntityUsuario persona){
 
-        EntityPersona personaTemp = repositoryPersona.findById(persona.getId()).orElse(null);
+        EntityUsuario personaTemp = repositoryUsuario.findById(persona.getId()).orElse(null);
         if (persona.getNombre() != null) {
             personaTemp.setNombre(persona.getNombre());
 
@@ -85,14 +82,14 @@ public class ServicePersona {
         } else if (persona.getPassword() != null) {
             personaTemp.setPassword(persona.getPassword());
         }
-        return  repositoryPersona.save(personaTemp);
+        return  repositoryUsuario.save(personaTemp);
     }
 
 
 
     public  Boolean borrarPersona(Long id){
 
-        repositoryPersona.deleteById(id);
+        repositoryUsuario.deleteById(id);
         return  Boolean.TRUE;
     }
 
@@ -101,7 +98,7 @@ public class ServicePersona {
     public Object  visualizarIdPersonaJPA(Long id){
 
 
-            return  repositoryPersona.findById(id);
+            return  repositoryUsuario.findById(id);
         }
 
 

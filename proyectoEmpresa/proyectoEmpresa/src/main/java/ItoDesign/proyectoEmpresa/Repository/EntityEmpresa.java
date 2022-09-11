@@ -33,8 +33,8 @@ public class EntityEmpresa {
     @Column(name="nit")
     private String nit;
 
-    @JoinColumn (name = "id_persona", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private EntityPersona idPersona;
+   // @JoinColumn (name = "id_persona", referencedColumnName = "id")
+    //@ManyToOne(optional = false)
+    //private EntityPersona idPersona;
 
 }
