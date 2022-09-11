@@ -4,6 +4,8 @@ import ItoDesign.proyectoEmpresa.util.EnumPersona;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.Collection;
+
 @Data   // PARA PODER INGRESAR A LOS DATOS LOS DEBE ENCAPSULAR Y PARA ELLOR NECESITO LOS SETT Y GETTER
 @Entity // ESTA DEPENDIENDIA NO ES DE LOMBOK SI NO DE LAS NUEVAS QUE SE AGREGARON PARA BD
 @Table(name="persona")
@@ -22,8 +24,10 @@ public class EntityPersona {
     @Column(name = "Password")
     private String password;
 
-   // @JoinColumn(name = "rol_ID")
-    //@Column(name = "rol")
-    //@Enumerated (EnumType.STRING)
-   // private EnumPersona rol;
+    @JoinColumn(name = "rol_ID")
+    @Column(name = "rol")
+    @Enumerated (EnumType.STRING)
+    private EnumPersona rol;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idPersona")
+    private Collection<EntityEmpresa> empresas;
 }
