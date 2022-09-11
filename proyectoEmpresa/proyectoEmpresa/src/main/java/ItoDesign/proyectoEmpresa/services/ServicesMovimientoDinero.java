@@ -1,13 +1,20 @@
 package ItoDesign.proyectoEmpresa.services;
 
 
-import ItoDesign.proyectoEmpresa.domain.DomainEmpresa;
+import ItoDesign.proyectoEmpresa.Repository.EntityMovimientoDinero;
+import ItoDesign.proyectoEmpresa.Repository.RepositoryEmpresa;
+import ItoDesign.proyectoEmpresa.Repository.RepositoryMovimientoDinero;
 import ItoDesign.proyectoEmpresa.domain.DomainMovimientoDinero;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class ServicesMovimientoDinero {
 
+    @Autowired
+    RepositoryMovimientoDinero RepositoryMovimientoDinero;
 
     public String ingresoDinero(DomainMovimientoDinero movimiento){
 
@@ -23,5 +30,12 @@ public class ServicesMovimientoDinero {
 
 
         return confegresoDinero;
+    }
+
+
+    public List<EntityMovimientoDinero> visualizarTotalCompras(){
+
+        List<EntityMovimientoDinero> list = RepositoryMovimientoDinero.findAll();
+        return list;
     }
 }
