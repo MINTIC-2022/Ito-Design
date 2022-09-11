@@ -34,6 +34,14 @@ public class ControllerPersona {
 
     }
 
+    @GetMapping(path="/udea/mintic/visualizarFilaJPA/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
+
+    public  ResponseEntity<Object>visualizarTodoIdJPA( @PathVariable  Long id){
+        return new  ResponseEntity <Object>(servicesPersona.visualizarIdPersonaJPA(id), HttpStatus.OK);
+    }
+
+
+
     @PatchMapping(path = "/udea/mintic/actualizarTodoPersona", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Object> actualizarTodoPersona(@RequestBody EntityPersona persona){
 

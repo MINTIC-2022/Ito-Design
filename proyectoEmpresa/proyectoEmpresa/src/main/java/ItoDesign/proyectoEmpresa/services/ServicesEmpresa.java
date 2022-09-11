@@ -22,9 +22,7 @@ public class ServicesEmpresa {
     return list;
    }
 
-   public Object visualizarIdJPA(Long id){
-      return  repositoryEmpresa.findById(id);
-   }
+   public Object visualizarIdJPA(Long id){return  repositoryEmpresa.findById(id);}
 
    public boolean agregarEmpresa(EntityEmpresa empresa){
        try {

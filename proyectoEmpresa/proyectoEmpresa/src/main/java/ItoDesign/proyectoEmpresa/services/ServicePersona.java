@@ -72,4 +72,13 @@ public class ServicePersona {
     }
 
 
+
+    public Object  visualizarIdPersonaJPA(Long id){
+
+
+            return  repositoryPersona.findById(id);
+        }
+
+
+
 }
