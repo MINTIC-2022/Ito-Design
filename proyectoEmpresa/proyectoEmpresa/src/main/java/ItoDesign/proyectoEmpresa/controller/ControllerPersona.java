@@ -23,7 +23,7 @@ public class ControllerPersona {
     }
 
     @PostMapping(path = "/udea/mintic/insertarUsuario", consumes =  MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity <Boolean> insertarPersona (@RequestBody EntityUsuario persona){
+    public ResponseEntity <Boolean> insertarUsuario (@RequestBody EntityUsuario persona){
 
         return new ResponseEntity<Boolean>(servicesPersona.insertaUsuario(persona), HttpStatus.OK);
 
@@ -38,14 +38,14 @@ public class ControllerPersona {
 
 
     @PatchMapping(path = "/udea/mintic/actualizarParcialUsuario", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Object> actualizarParcialPersonaJPA(@RequestBody EntityUsuario persona){
+    public ResponseEntity<Object> actualizarParcialUsuarioJPA(@RequestBody EntityUsuario persona){
 
         return new ResponseEntity<Object>(servicesPersona.actualizarParcialUsuarioJPA(persona), HttpStatus.OK);
 
     }
 
     @DeleteMapping(path = "/udea/mintic/borrarUsuario/{id}")
-    public ResponseEntity<Boolean> borrarPersona(@PathVariable Long id){
+    public ResponseEntity<Boolean> borrarUsuario(@PathVariable Long id){
         servicesPersona.borrarPersona(id);
         return new ResponseEntity<Boolean>(HttpStatus.OK);
     }
