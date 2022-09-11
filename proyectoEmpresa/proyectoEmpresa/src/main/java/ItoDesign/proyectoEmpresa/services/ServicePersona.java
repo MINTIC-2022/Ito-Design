@@ -1,5 +1,6 @@
 package ItoDesign.proyectoEmpresa.services;
 
+import ItoDesign.proyectoEmpresa.Repository.EntityEmpresa;
 import ItoDesign.proyectoEmpresa.Repository.EntityPersona;
 import ItoDesign.proyectoEmpresa.Repository.RepositoryEmpresa;
 import ItoDesign.proyectoEmpresa.domain.DomainEmpresa;
@@ -65,11 +66,44 @@ public class ServicePersona {
 
     }
 
+
+    public  Object actualizarParcialPersonaJPA(EntityPersona persona){
+
+        EntityPersona personaTemp = repositoryPersona.findById(persona.getId()).orElse(null);
+        if (persona.getNombre() != null) {
+            personaTemp.setNombre(persona.getNombre());
+
+        } else if (persona.getApellido() != null) {
+            personaTemp.setApellido(persona.getApellido());
+
+        } else if (persona.getEdad() != null) {
+            personaTemp.setEdad(persona.getEdad());
+
+        } else if (persona.getDoc() != null) {
+            personaTemp.setDoc(persona.getDoc());
+
+        } else if (persona.getPassword() != null) {
+            personaTemp.setPassword(persona.getPassword());
+        }
+        return  repositoryPersona.save(personaTemp);
+    }
+
+
+
     public  Boolean borrarPersona(Long id){
 
         repositoryPersona.deleteById(id);
         return  Boolean.TRUE;
     }
+
+
+
+    public Object  visualizarIdPersonaJPA(Long id){
+
+
+            return  repositoryPersona.findById(id);
+        }
+
 
 
 }
