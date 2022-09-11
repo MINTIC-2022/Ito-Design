@@ -34,9 +34,9 @@ public class ControllerPersona {
 
     }
 
-    @GetMapping(path="/udea/mintic/visualizarFilaJPA/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(path="/udea/mintic/visualizarFilaUsuarioJPA/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
 
-    public  ResponseEntity<Object>visualizarTodoIdJPA( @PathVariable  Long id){
+    public  ResponseEntity<Object>visualizarFilaUsuarioJPA( @PathVariable  Long id){
         return new  ResponseEntity <Object>(servicesPersona.visualizarIdPersonaJPA(id), HttpStatus.OK);
     }
 
