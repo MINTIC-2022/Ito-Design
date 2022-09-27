@@ -8,7 +8,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.List;
 
@@ -26,10 +28,16 @@ public class ControllerEmpresa {
     }
 
 
-    @PostMapping(path ="/udea/mintic/agregarEmpresaJPA",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(path ="/udea/mintic/agregarEmpresaJPA")
 
-       public ResponseEntity<Boolean> agregarEmpresa(@RequestBody EntityEmpresa empresa){
-    return new ResponseEntity<Boolean>(servicesEmpresa.agregarEmpresa(empresa),HttpStatus.OK);
+       public  RedirectView agregarEmpresa(@ModelAttribute EntityEmpresa empresa, Model modelo){
+
+        modelo.addAttribute (empresa);
+        if(servicesEmpresa.agregarEmpresa(empresa).equals(Boolean.TRUE)){
+            return  new RedirectView("/crearEmpresa");
+        }else{
+            return new  RedirectView("/crearEmpresa");
+        }
     }
 
 

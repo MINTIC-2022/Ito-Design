@@ -24,7 +24,7 @@ public class ServicesEmpresa {
 
    public Object visualizarIdJPA(Long id){return  repositoryEmpresa.findById(id);}
 
-   public boolean agregarEmpresa(EntityEmpresa empresa){
+   public Boolean agregarEmpresa(EntityEmpresa empresa){
        try {
            repositoryEmpresa.save(empresa); // SI SE EJECUTA BIEN GUADA Y EN LA PARTE INFERIOR RETORNA UN TRE
        } catch (Exception E) {
@@ -45,8 +45,8 @@ public class ServicesEmpresa {
    public  Object actualizarParcialJPA(EntityEmpresa empresa){
 
     EntityEmpresa empresaTemp = repositoryEmpresa.findById(empresa.getId()).orElse(null);
-    if (empresa.getNombreEmpresa() != null) {
-        empresaTemp.setNombreEmpresa(empresa.getNombreEmpresa());
+    if (empresa.getNombre() != null) {
+        empresaTemp.setNombre(empresa.getNombre());
 
     } else if (empresa.getDireccion() != null) {
         empresaTemp.setDireccion(empresa.getDireccion());

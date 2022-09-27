@@ -19,7 +19,7 @@ public class EntityEmpresa {
     private Long id; // PARA EL Id JPA NO RECONOCE LOS DATOS PRIMITIVOS  POR ESO SE CAMBIA A LONG
 
     @Column(name="nombre")
-    private String nombreEmpresa;
+    private String nombre;
 
     @Column(name="direccion")
     private String direccion;
