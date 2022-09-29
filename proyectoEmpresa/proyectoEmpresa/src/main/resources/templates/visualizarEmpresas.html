@@ -49,8 +49,20 @@
                         <p>sector:</p><p th:text="${itemP.sector}" class="card-text"></p>
                         <br/>
                         <p>nit:</p><p th:text="${itemP.nit}" class="card-text"></p>
+
+
+                          <div class="gap-2">
+                              <form th:action="@{/enterprises/udea/mintic/eliminarEmpresaJPA/{id}(id=${itemP.id})}" th:method="delete">
+                                  <button class="btn btn-danger" type="submit">Eliminar</button>
+                              </form>
+                          </div>
+
+
                       </div>
                     </div>
+
+
+
                 </div>
 
 

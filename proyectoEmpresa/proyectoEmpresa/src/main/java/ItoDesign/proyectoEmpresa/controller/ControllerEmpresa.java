@@ -73,12 +73,15 @@ public class ControllerEmpresa {
     return new ResponseEntity<Object>(servicesEmpresa.actualizarParcialJPA(empresa),HttpStatus.OK);
 }
 
-    @DeleteMapping(path = "/udea/mintic/eliminarEmpresaJPA/{id}")
 
-        public ResponseEntity<Object> eliminarEmpresa(@PathVariable Long id){
-            servicesEmpresa.eliminarEmpresa( id);
-     return new ResponseEntity<Object>(HttpStatus.OK);
-}
+
+    // METODO DELETE PARA TRABAJAR CON TYLIFT
+    @DeleteMapping(path = "/udea/mintic/eliminarEmpresaJPA/{id}")
+    public RedirectView borrarPersonaJPA(@PathVariable Long id) {
+
+        servicesEmpresa.eliminarEmpresa(id);
+        return  new RedirectView("/visualizarEmpresas");
+    }
 
 
 }
