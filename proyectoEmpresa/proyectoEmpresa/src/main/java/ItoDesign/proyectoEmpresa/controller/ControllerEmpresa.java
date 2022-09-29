@@ -41,11 +41,24 @@ public class ControllerEmpresa {
     }
 
 
-    @PutMapping(path = "/udea/mintic/actualizarTotalJPA",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
 
-       public ResponseEntity<Boolean> actualizarTotalJPA(@RequestBody EntityEmpresa empresa){
-    return new ResponseEntity<Boolean>( servicesEmpresa.actualizarTotalJPA(empresa), HttpStatus.OK);
-}
+
+    @PutMapping(path = "/udea/mintic/actualizarTodoJPA")
+    public RedirectView actualizarTodoJPA(@ModelAttribute EntityEmpresa empresa, Model modelo) {
+
+        modelo.addAttribute (empresa);
+        if(servicesEmpresa.actualizarTotalJPA(empresa).equals(Boolean.TRUE)){
+            return  new RedirectView("/visualizarEmpresas");
+        }else{
+            return new RedirectView("/error");
+        }
+
+    }
+
+
+
+
+
 
 
     @GetMapping(path="/udea/mintic/visualizarFilaJPA/{id}",produces = MediaType.APPLICATION_JSON_VALUE)

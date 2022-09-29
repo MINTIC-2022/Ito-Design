@@ -8,6 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.servlet.view.RedirectView;
+
+import java.util.List;
 
 @Controller
 public class ControllerFrontend {
@@ -38,7 +43,7 @@ public class ControllerFrontend {
         return "PrincipalEmpresas";
     }
 
-// PG VILUALIZAR AGREGAR EMPRESA
+// PG  AGREGAR EMPRESA
 
     @GetMapping (path = "/crearEmpresa")
     public String crearEmpresa(Model modelo){
@@ -47,4 +52,20 @@ public class ControllerFrontend {
         return "crearEmpresa";
     }
 
+    // PG VILUALIZAR  EMPRESA_PUT
+
+    @GetMapping(path = "/visualizarEmpresas")
+    public String visualizarEmpresas(Model modelo){
+
+            List<EntityEmpresa> listEmpresa = servicesEmpresa.visualizarTodosJPA();
+
+            modelo.addAttribute("empresa", listEmpresa);
+            return "visualizarEmpresas";
+
+    }
+
+
+
 }
+
+
