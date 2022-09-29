@@ -15,8 +15,7 @@ public class EntityUsuario {
     private String nombre;
     @Column(name = "apellido")
     private String apellido;
-    @Column(name = "ed" +
-            "ad")
+    @Column(name = "edad")
     private Long edad;
     @Column(name = "doc")
     private String doc;
